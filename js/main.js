@@ -26,6 +26,7 @@ function loadProperties(containerId) {
             }
         });
     }).catch(() => {
-        document.querySelector(`${containerId} .hero-property-card`).innerHTML = '<h4>Test 1M$</h4><p>Villa • Los Santos</p><div class="hero-price">1M$</div><div class="hero-status achete">💰 À vendre</div>';
+        document.querySelector(`${containerId} .hero-property-card`).innerHTML = 
+            '<h4>Test 1M$</h4><p>Villa • Los Santos</p><div class="hero-price">1M$</div><div class="hero-status">💰 À vendre</div>';
     });
 }
