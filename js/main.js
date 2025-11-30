@@ -1,42 +1,68 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyCKYyeJnRPGir4UzKzChYSLpQgV4CmVp6c",
-    authDomain: "san-andreas-real-estate-2025.firebaseapp.com",
-    projectId: "san-andreas-real-estate-2025",
-    storageBucket: "san-andreas-real-estate-2025.firebasestorage.app",
-    messagingSenderId: "1075543492610",
-    appId: "1:1075543492610:web:8a853dfd3927861fcd3f1b"
-};
+// GSAP INIT
+gsap.registerPlugin(ScrollTrigger);
 
+// Firebase
+const firebaseConfig = { /* YOUR CONFIG */ };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-function loadFeaturedProperties() {
-    db.collection('properties')
-        .where('visible', '==', true)
-        .orderBy('createdAt', 'desc')
-        .limit(3)
-        .get()
-        .then(snapshot => {
-            const cards = document.querySelectorAll('#featured-properties .featured-card');
-            snapshot.forEach((doc, index) => {
-                if (cards[index]) {
-                    const data = doc.data();
-                    cards[index].classList.remove('skeleton');
-                    cards[index].innerHTML = `
-                        <div class="content">
-                            <h3>${data.title}</h3>
-                            <p>${data.type} • ${data.quartier}</p>
-                            <div class="price">${data.price}</div>
-                        </div>
-                    `;
-                }
-            });
-        })
-        .catch(() => {
-            // Fallback
-            const cards = document.querySelectorAll('#featured-properties .featured-card');
-            cards[0].innerHTML = '<div class="content"><h3>Villa Premium</h3><p>6ch • Los Santos</p><div class="price">2.450.000 $</div></div>';
+// CURSOR
+document.addEventListener('mousemove', (e) => {
+    gsap.to('.cursor', { x: e.clientX, y: e.clientY, duration: 0.1 });
+    gsap.to('.cursor2', { x: e.clientX, y: e.clientY, duration: 0.15 });
+});
+
+// HEADER SCROLL
+window.addEventListener('scroll', () => {
+    document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// HERO ANIMATIONS
+gsap.from('.hero-title .title-line', {
+    y: 100,
+    opacity: 0,
+    duration: 1.2,
+    stagger: 0.3,
+    ease: 'power3.out'
+});
+gsap.from('.hero-stats .stat', {
+    scale: 0.8,
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.2,
+    scrollTrigger: '.hero'
+});
+
+// FEATURED FIREBASE
+function loadFeatured() {
+    db.collection('properties').where('visible', '==', true).limit(3).get().then(snapshot => {
+        snapshot.forEach((doc, i) => {
+            const data = doc.data();
+            const card = document.querySelectorAll('.featured-card')[i];
+            card.classList.remove('skeleton');
+            card.querySelector('.card-title').textContent = data.title;
+            card.querySelector('.card-details').textContent = `${data.type} • ${data.quartier}`;
+            card.querySelector('.card-price').textContent = data.price;
         });
+    });
 }
 
-document.addEventListener('DOMContentLoaded', loadFeaturedProperties);
+document.addEventListener('DOMContentLoaded', () => {
+    loadFeatured();
+    
+    // SCROLL ANIMATIONS
+    gsap.utils.toArray('.featured-card').forEach((card, i) => {
+        gsap.fromTo(card, 
+            { y: 100, opacity: 0, rotationY: -20 },
+            { 
+                y: 0, opacity: 1, rotationY: 0,
+                duration: 1.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%'
+                }
+            }
+        );
+    });
+});
