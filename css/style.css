@@ -1,233 +1,291 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* DESIGN INSPIRÉ KRETZ - SAN ANDREAS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-    --primary: #1D3444;
-    --secondary: #808080;
-    --dark: #000000;
-    --light: #FFFFFF;
+    --primary: #1a365d;
+    --secondary: #2c5282;
+    --accent: #4299e1;
+    --dark: #1a202c;
+    --light: #f7fafc;
+    --white: #ffffff;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, var(--dark) 0%, #1a2330 50%, var(--primary) 100%);
+    line-height: 1.6;
     color: var(--dark);
     overflow-x: hidden;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
 
+/* HEADER */
 .header {
-    background: rgba(29,52,68,0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
     position: fixed;
     top: 0;
     width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
     z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
 }
-
-.header-content { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
-.logo-img { height: 70px !important; width: auto !important; }
-
-.nav-menu { display: flex; list-style: none; gap: 40px; }
+.header-content { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem 0; 
+}
+.logo-img { height: 60px; width: auto; }
+.nav-menu { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+}
 .nav-menu a { 
-    color: white !important; 
+    color: var(--dark); 
     text-decoration: none; 
     font-weight: 500; 
-    font-size: 16px; 
     transition: color 0.3s; 
 }
-.nav-menu a:hover, .nav-menu a.active { color: #a0c4ff !important; }
-
-.dropdown { position: relative; }
-.dropdown-menu {
-    position: absolute; top: 100%; left: 0; 
-    background: rgba(255,255,255,0.95); 
-    backdrop-filter: blur(20px);
-    border-radius: 15px; 
-    box-shadow: 0 20px 40px rgba(29,52,68,0.2); 
-    min-width: 180px;
-    opacity: 0; visibility: hidden; 
-    transform: translateY(-10px); 
-    transition: all 0.3s ease;
+.nav-menu a:hover, .nav-menu a.active { 
+    color: var(--accent); 
 }
-.dropdown:hover .dropdown-menu { 
-    opacity: 1; visibility: visible; 
-    transform: translateY(0); 
-}
-.dropdown-menu li { padding: 12px 20px; }
-.dropdown-menu a { color: var(--dark) !important; }
 
+/* HERO FULLSCREEN KRETZ */
+.hero-fullscreen {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); }
+.hero-content { position: relative; z-index: 2; text-align: center; color: white; }
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+}
+.hero-subtitle {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    opacity: 0.95;
+}
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.btn-primary, .btn-secondary {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 10px 30px rgba(66,153,225,0.4);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(66,153,225,0.5); }
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+.btn-secondary:hover { background: white; color: var(--dark); }
+
+/* SECTIONS */
 .section-title {
-    font-size: 1.8rem !important; font-weight: 700;
-    background: linear-gradient(135deg, var(--light), #a0c4ff); 
-    -webkit-background-clip: text; 
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-align: center; margin-bottom: 40px; 
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    margin: 1rem auto;
 }
 
-.hero-properties { padding: 140px 0 80px; }
-.hero-properties-grid { display: flex; gap: 20px; justify-content: center; }
+/* DESTINATIONS KRETZ-STYLE */
+.destinations-section { padding: 8rem 0; background: #f8fafc; }
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+.destination-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    transition: all 0.4s;
+}
+.destination-card:hover { transform: translateY(-15px); box-shadow: 0 40px 80px rgba(0,0,0,0.15); }
+.destination-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+.destination-content {
+    padding: 2rem;
+}
+.destination-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
 
+/* PROPERTIES */
+.properties-section { padding: 8rem 0; }
+.hero-properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 .hero-property-card {
-    width: 300px; height: 250px; 
-    background: rgba(255,255,255,0.95); 
-    backdrop-filter: blur(20px);
-    padding: 25px; border-radius: 20px; 
-    box-shadow: 0 20px 40px rgba(29,52,68,0.2);
-    transition: all 0.3s ease; 
-    border-top: 4px solid var(--primary);
-    display: flex; flex-direction: column; 
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
-
+.hero-property-card:hover { transform: translateY(-10px); }
 .hero-property-card.skeleton {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%; 
     animation: loading 1.5s infinite;
 }
-
-@keyframes loading { 
-    0% { background-position: 200% 0; } 
-    100% { background-position: -200% 0; } 
-}
-
-.hero-property-card h4 { 
-    font-size: 1.3rem; font-weight: 600; 
-    color: var(--primary); margin-bottom: 10px; 
-}
-.hero-property-card p { 
-    color: var(--secondary); font-size: 14px; 
-    margin-bottom: 15px; 
-}
-.hero-price { 
-    font-size: 1.8rem; font-weight: 700; 
-    color: var(--primary); 
-}
+@keyframes loading { 0%, 100% { background-position: 200% 0; } 50% { background-position: -200% 0; } }
+.hero-property-card h4 { font-size: 1.4rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; }
+.hero-property-card p { color: #666; margin-bottom: 1rem; }
+.hero-price { font-size: 2rem; font-weight: 700; color: var(--accent); }
 .hero-status {
-    padding: 8px 16px; border-radius: 20px; 
-    font-weight: 500; font-size: 13px; 
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
     text-align: center;
-    background: rgba(29,52,68,0.1);
-}
-
-.team-section { padding: 80px 0; background: rgba(255,255,255,0.05); }
-.team-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 30px; margin-top: 40px; 
-}
-
-.team-card {
-    text-align: center; 
-    background: rgba(255,255,255,0.95); 
-    backdrop-filter: blur(25px);
-    padding: 30px 25px; border-radius: 20px; 
-    box-shadow: 0 20px 40px rgba(29,52,68,0.15);
-    transition: all 0.3s ease;
-}
-.team-card:hover { transform: translateY(-10px); }
-
-.team-photo {
-    width: 100px; height: 100px; border-radius: 50%; 
-    margin: 0 auto 20px;
-    background-size: cover; background-position: center; 
-    box-shadow: 0 10px 30px rgba(29,52,68,0.2);
-}
-
-.team-card h4 { 
-    font-size: 1.4rem; font-weight: 600; 
-    color: var(--primary); margin-bottom: 8px; 
-}
-.team-role { 
-    color: var(--secondary); font-weight: 500; 
-    margin-bottom: 12px; font-size: 1rem; 
-}
-.team-contact { 
-    color: var(--dark); margin: 4px 0; font-size: 0.9rem; 
-}
-
-/* TWITTER PROFIL */
-.twitter-section { padding: 80px 0; }
-.twitter-profile-fallback { margin-top: 30px; display: flex; justify-content: center; }
-.twitter-profile-link { text-decoration: none; display: block; }
-
-.twitter-profile-card {
-    background: rgba(255,255,255,0.95); 
-    backdrop-filter: blur(25px);
-    border-radius: 25px; 
-    box-shadow: 0 25px 50px rgba(29,52,68,0.3);
-    border-left: 6px solid #1da1f2; 
-    padding: 30px; 
-    max-width: 450px;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.twitter-profile-card:hover { transform: translateY(-5px); }
-
-.twitter-profile-header {
-    display: flex; align-items: center; 
-    gap: 15px; margin-bottom: 25px; 
-    justify-content: center;
-}
-
-.twitter-avatar {
-    width: 80px; height: 80px; 
-    border-radius: 50%; 
-    border: 4px solid #1da1f2;
-    font-size: 2.5rem; 
-    display: flex; align-items: center; 
-    justify-content: center;
-    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+    background: linear-gradient(135deg, var(--accent), #63b3ed);
     color: white;
 }
 
-.twitter-profile-info {
-    text-align: left;
+/* APPROACH SECTION */
+.approach-section { padding: 8rem 0; background: var(--light); }
+.approach-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.approach-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+.approach-text p { font-size: 1.1rem; margin-bottom: 2rem; color: #666; }
+.approach-text ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+.approach-text li {
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.approach-image {
+    height: 500px;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
 }
 
+/* TWITTER */
+.twitter-section { padding: 6rem 0; background: #f8fafc; }
+.twitter-profile-link { display: block; max-width: 450px; margin: 0 auto; text-decoration: none; }
+.twitter-profile-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-left: 6px solid var(--accent);
+}
+.twitter-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #63b3ed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    margin: 0 auto 1rem;
+}
 .twitter-profile-info h4 {
-    font-size: 1.4rem; font-weight: 700; 
-    color: var(--primary); margin: 0 0 5px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
 }
-
-.twitter-profile-info p {
-    color: #1da1f2; font-weight: 500; 
-    margin: 0; font-size: 1rem;
-}
-
+.twitter-profile-info p { color: var(--accent); font-weight: 500; }
 .twitter-button {
-    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
-    color: white; padding: 15px 30px; 
+    background: linear-gradient(135deg, var(--accent), #63b3ed);
+    color: white;
+    padding: 1rem 2rem;
     border-radius: 25px;
-    text-align: center; font-weight: 600; 
-    cursor: pointer;
-    transition: all 0.3s ease;
+    font-weight: 600;
     display: inline-block;
+    margin-top: 1.5rem;
+    transition: all 0.3s;
 }
+.twitter-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(66,153,225,0.4); }
 
-.twitter-button:hover { 
-    transform: scale(1.05); 
-    box-shadow: 0 10px 25px rgba(29,161,242,0.4); 
-}
-
+/* FOOTER */
 .footer { 
-    background: transparent; 
-    padding: 40px 0; text-align: center; 
-}
-.footer p { 
-    color: white !important; 
-    font-size: 14px; margin: 0; 
+    background: var(--dark); 
+    color: white; 
+    text-align: center; 
+    padding: 3rem 0; 
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .hero-properties-grid { flex-direction: column; align-items: center; }
-    .nav-menu { gap: 20px; }
-    .section-title { font-size: 1.5rem !important; }
-    .twitter-profile-card { padding: 25px 20px; }
-    .twitter-profile-header { flex-direction: column; text-align: center; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .approach-content { grid-template-columns: 1fr; text-align: center; }
+    .approach-image { height: 300px; margin-top: 2rem; }
+    .destinations-grid { grid-template-columns: 1fr; }
+    .nav-menu { gap: 1rem; }
 }
