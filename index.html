@@ -3,154 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Andreas Real Estate - Propriétés de Luxe</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>San Andreas Real Estate - Architecture Minimaliste</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- HEADER KRETZ -->
+    <!-- HEADER ARCHITECTURAL -->
     <header class="header">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="https://i.goopics.net/8i8et4.png" alt="San Andreas Real Estate" class="logo-img">
-                </div>
-                <nav class="navbar">
-                    <ul class="nav-menu">
-                        <li><a href="index.html" class="active">Accueil</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="proprietes.html">Propriétés</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
+            <div class="header-left">
+                <img src="https://i.goopics.net/8i8et4.png" alt="San Andreas Real Estate" class="logo">
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link active">Accueil</a>
+                <a href="acheter.html" class="nav-link">Acheter</a>
+                <a href="louer.html" class="nav-link">Louer</a>
+                <a href="lagence.html" class="nav-link">L'agence</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-right">
+                <a href="https://discord.gg/f82HKxjtDB" target="_blank" class="discord-link">
+                    <svg viewBox="0 0 24 24" class="discord-icon">
+                        <path fill="currentColor" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 11.558 11.558 0 0 0 .907-.967.074.074 0 0 1 .08-.036 12.33 12.33 0 0 0 2.557.354.076.076 0 0 1 .068.023 11.47 11.47 0 0 0 1.554.829.077.077 0 0 1-.012.131 13.258 13.258 0 0 1-1.882.898.076.076 0 0 0-.04.095 12.308 12.308 0 0 0 3.299-1.586.076.076 0 0 1 .087-.019 18.247 18.247 0 0 0 4.968-2.704.074.074 0 0 1 .026-.032C21.343 13.505 22.5 9.046 20.317 4.397a.073.073 0 0 0-.028-.027zM8.013 15.306a1.147 1.147 0 0 1-1.161 1.114c-.674 0-1.215-.543-1.161-1.214a1.162 1.162 0 1 1 2.322 0zM15.962 15.306a1.157 1.157 0 0 1-1.161 1.114c-.674 0-1.215-.543-1.161-1.214a1.162 1.162 0 1 1 2.322 0z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- HERO FULLSCREEN KRETZ EXACT -->
-    <section class="hero-fullscreen">
-        <div class="hero-overlay"></div>
+    <!-- HERO LOS SANTOS -->
+    <section class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="container">
                 <h1 class="hero-title">San Andreas Real Estate</h1>
-                <p class="hero-subtitle">Explorez les plus belles propriétés de luxe : villas, appartements, domaines privés. Notre expertise vous guide vers le bien immobilier de vos rêves.</p>
-                <div class="hero-buttons">
-                    <a href="proprietes.html" class="btn-primary">Découvrir nos biens</a>
-                    <a href="contact.html" class="btn-secondary">Nous contacter</a>
-                </div>
+                <p class="hero-subtitle">Architecture minimaliste et propriétés d'exception à Los Santos</p>
             </div>
         </div>
     </section>
 
-    <!-- DESTINATIONS KRETZ GRID -->
-    <section class="destinations-section">
+    <!-- A L'AFFICHE FIREBASE -->
+    <section class="featured">
         <div class="container">
-            <h2 class="section-title">Nos Quartiers d'Exception</h2>
-            <div class="destinations-grid">
-                <div class="destination-card">
-                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600')"></div>
-                    <div class="destination-content">
-                        <h3>Los Santos Centre</h3>
-                        <p>Villas de luxe et penthouses avec vue panoramique sur la ville</p>
-                    </div>
-                </div>
-                <div class="destination-card">
-                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600')"></div>
-                    <div class="destination-content">
-                        <h3>Vinewood Hills</h3>
-                        <p>Domaines exclusifs pour célébrités et investisseurs premium</p>
-                    </div>
-                </div>
-                <div class="destination-card">
-                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600')"></div>
-                    <div class="destination-content">
-                        <h3>Vespucci Beach</h3>
-                        <p>Appartements vue océan et waterfront properties exclusives</p>
-                    </div>
-                </div>
-                <div class="destination-card">
-                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600')"></div>
-                    <div class="destination-content">
-                        <h3>San Fierro Bay</h3>
-                        <p>Lofts industriels rénovés et architectures modernes</p>
-                    </div>
-                </div>
+            <h2 class="section-title">À l'affiche</h2>
+            <div class="featured-grid" id="featured-properties">
+                <div class="featured-card skeleton"></div>
+                <div class="featured-card skeleton"></div>
+                <div class="featured-card skeleton"></div>
             </div>
         </div>
     </section>
 
-    <!-- PROPERTIES FIREBASE KRETZ-STYLE -->
-    <section class="properties-section">
+    <!-- ÉQUIPE -->
+    <section class="team">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">🏠 Dernières Propriétés</h2>
-                <a href="proprietes.html" class="section-link">Voir toutes les propriétés</a>
-            </div>
-            <div class="properties-grid" id="hero-properties">
-                <div class="property-card skeleton"></div>
-                <div class="property-card skeleton"></div>
-                <div class="property-card skeleton"></div>
+            <h2 class="section-title">Notre équipe</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300')"></div>
+                    <h3>Jean Dupont</h3>
+                    <p class="team-role">Directeur Général</p>
+                    <p class="team-contact">jean.dupont@sarealestate.com</p>
+                    <p class="team-contact">+33 1 23 45 67 89</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300')"></div>
+                    <h3>Marie Martin</h3>
+                    <p class="team-role">Conseillère Immobilier</p>
+                    <p class="team-contact">marie.martin@sarealestate.com</p>
+                    <p class="team-contact">+33 1 23 45 67 90</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo" style="background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300')"></div>
+                    <h3>Pierre Durand</h3>
+                    <p class="team-role">Expert Évaluation</p>
+                    <p class="team-contact">pierre.durand@sarealestate.com</p>
+                    <p class="team-contact">+33 1 23 45 67 91</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- TWITTER STREAM -->
+    <section class="twitter">
+        <div class="container">
+            <h2 class="section-title">Suivez-nous</h2>
+            <div class="twitter-container">
+                <a href="https://x.com/SARealEstate_01" target="_blank" class="twitter-profile">
+                    <div class="twitter-avatar">🐦</div>
+                    <div class="twitter-info">
+                        <h3>@SARealEstate_01</h3>
+                        <p>Derniers tweets en direct</p>
+                    </div>
+                    <div class="twitter-arrow">→</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER MINIMAL -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 San Andreas Real Estate. Tous droits réservés. | Los Santos, San Andreas</p>
+            <div class="footer-content">
+                <img src="https://i.goopics.net/8i8et4.png" alt="Logo" class="footer-logo">
+                <p>L'agence immobilière d'architecture minimaliste à Los Santos</p>
+                <p class="footer-copy">&copy; 2025 San Andreas Real Estate. Tous droits réservés. | Los Santos, San Andreas</p>
+            </div>
         </div>
     </footer>
 
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCKYyeJnRPGir4UzKzChYSLpQgV4CmVp6c",
-            authDomain: "san-andreas-real-estate-2025.firebaseapp.com",
-            projectId: "san-andreas-real-estate-2025",
-            storageBucket: "san-andreas-real-estate-2025.firebasestorage.app",
-            messagingSenderId: "1075543492610",
-            appId: "1:1075543492610:web:8a853dfd3927861fcd3f1b"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        function loadProperties(containerId) {
-            db.collection('properties').where('visible', '==', true).orderBy('createdAt', 'desc').limit(3).get()
-            .then(snapshot => {
-                const cards = document.querySelectorAll(`${containerId} .property-card`);
-                snapshot.forEach((doc, index) => {
-                    if (cards[index]) {
-                        const data = doc.data();
-                        cards[index].classList.remove('skeleton');
-                        cards[index].innerHTML = `
-                            <div class="property-image" style="background-image: url('${data.image || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400'}')"></div>
-                            <div class="property-content">
-                                <h4>${data.title}</h4>
-                                <p>${data.type} • ${data.quartier}</p>
-                                <div class="property-price">${data.price}</div>
-                                <div class="property-status ${data.status}">À vendre</div>
-                            </div>
-                        `;
-                    }
-                });
-            }).catch(() => {
-                document.querySelector(`${containerId} .property-card`).innerHTML = `
-                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400')"></div>
-                    <div class="property-content">
-                        <h4>Villa Los Santos Centre</h4>
-                        <p>6 chambres • Centre-ville</p>
-                        <div class="property-price">1.850.000 $</div>
-                        <div class="property-status achete">À vendre</div>
-                    </div>
-                `;
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProperties('#hero-properties');
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
