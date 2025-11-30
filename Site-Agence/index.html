@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Andreas Real Estate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://i.goopics.net/8i8et4.png" alt="San Andreas Real Estate" class="logo-img">
+                </div>
+                <nav class="navbar">
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="active">Accueil</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="proprietes.html">Propriétés</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-properties">
+        <div class="container">
+            <h2 class="section-title">🏠 Dernières Annonces</h2>
+            <div class="hero-properties-grid" id="hero-properties">
+                <div class="hero-property-card skeleton"></div>
+                <div class="hero-property-card skeleton"></div>
+                <div class="hero-property-card skeleton"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="twitter-section">
+        <div class="container">
+            <h2 class="section-title">🐦 @SARealEstate_01</h2>
+            <a href="https://twitter.com/SARealEstate_01" target="_blank" class="twitter-profile-link">
+                <div class="twitter-profile-card">
+                    <div class="twitter-profile-header">
+                        <div class="twitter-avatar">🐦</div>
+                        <div class="twitter-profile-info">
+                            <h4>@SARealEstate_01</h4>
+                            <p>San Andreas Real Estate 🏠💰</p>
+                        </div>
+                    </div>
+                    <div class="twitter-button">Voir le profil →</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 San Andreas Real Estate</p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProperties('#hero-properties');
+        });
+    </script>
+</body>
+</html>
