@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Andreas Real Estate</title>
+    <title>San Andreas Real Estate - Agence Immobilière Premium</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- HEADER KRETZ-STYLE -->
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -25,9 +27,55 @@
         </div>
     </header>
 
-    <section class="hero-properties">
+    <!-- HERO FULLSCREEN KRETZ-STYLE -->
+    <section class="hero-fullscreen">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">San Andreas Real Estate</h1>
+                <p class="hero-subtitle">Votre agence immobilière premium à Los Santos, San Fierro et Las Venturas</p>
+                <div class="hero-buttons">
+                    <a href="proprietes.html" class="btn-primary">Voir les Biens</a>
+                    <a href="contact.html" class="btn-secondary">Nous Contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATIONS / QUARTIERS -->
+    <section class="destinations-section">
         <div class="container">
-            <h2 class="section-title">🏠 Dernières Annonces</h2>
+            <h2 class="section-title">Nos Quartiers d'Exception</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600')"></div>
+                    <div class="destination-content">
+                        <h3>Los Santos Centre</h3>
+                        <p>Villas de luxe et penthouses avec vue panoramique</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600')"></div>
+                    <div class="destination-content">
+                        <h3>Vinewood Hills</h3>
+                        <p>Domaine exclusifs pour célébrités</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600')"></div>
+                    <div class="destination-content">
+                        <h3>Vespucci Beach</h3>
+                        <p>Appartements vue océan premium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DERNIÈRES ANNONCES FIREBASE -->
+    <section class="properties-section">
+        <div class="container">
+            <h2 class="section-title">🏠 Dernières Propriétés</h2>
             <div class="hero-properties-grid" id="hero-properties">
                 <div class="hero-property-card skeleton"></div>
                 <div class="hero-property-card skeleton"></div>
@@ -36,6 +84,26 @@
         </div>
     </section>
 
+    <!-- NOTRE APPROCHE -->
+    <section class="approach-section">
+        <div class="container">
+            <div class="approach-content">
+                <div class="approach-text">
+                    <h2>Une Agence de Famille</h2>
+                    <p>Depuis 10 ans, San Andreas Real Estate accompagne les plus grandes fortunes de San Andreas dans leurs projets immobiliers. Confiance, discrétion et expertise sont nos valeurs.</p>
+                    <ul>
+                        <li>✅ Accompagnement personnalisé 24/7</li>
+                        <li>✅ Réseau exclusif de propriétaires</li>
+                        <li>✅ Transactions sécurisées</li>
+                    </ul>
+                    <a href="contact.html" class="btn-primary">Prendre RDV</a>
+                </div>
+                <div class="approach-image" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TWITTER -->
     <section class="twitter-section">
         <div class="container">
             <h2 class="section-title">🐦 @SARealEstate_01</h2>
@@ -54,16 +122,52 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 San Andreas Real Estate</p>
+            <p>&copy; 2025 San Andreas Real Estate. Tous droits réservés. | Los Santos, San Andreas</p>
         </div>
     </footer>
 
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script src="js/main.js"></script>
     <script>
+        // Firebase config (ta nouvelle)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKYyeJnRPGir4UzKzChYSLpQgV4CmVp6c",
+            authDomain: "san-andreas-real-estate-2025.firebaseapp.com",
+            projectId: "san-andreas-real-estate-2025",
+            storageBucket: "san-andreas-real-estate-2025.firebasestorage.app",
+            messagingSenderId: "1075543492610",
+            appId: "1:1075543492610:web:8a853dfd3927861fcd3f1b"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        function loadProperties(containerId) {
+            db.collection('properties').where('visible', '==', true).orderBy('createdAt', 'desc').limit(3).get()
+            .then(snapshot => {
+                const cards = document.querySelectorAll(`${containerId} .hero-property-card`);
+                snapshot.forEach((doc, index) => {
+                    if (cards[index]) {
+                        const data = doc.data();
+                        cards[index].classList.remove('skeleton');
+                        cards[index].innerHTML = `
+                            <h4>${data.title}</h4>
+                            <p>${data.type} • ${data.quartier}</p>
+                            <div class="hero-price">${data.price}</div>
+                            <div class="hero-status ${data.status}">💰 À vendre</div>
+                        `;
+                    }
+                });
+            }).catch(() => {
+                // Fallback
+                document.querySelector(`${containerId} .hero-property-card`).innerHTML = 
+                    '<h4>Villa Los Santos</h4><p>5 chambres • Centre-ville</p><div class="hero-price">1.2M$</div><div class="hero-status achete">💰 À vendre</div>';
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             loadProperties('#hero-properties');
         });
